@@ -38,7 +38,7 @@ mv ls /bin/ls-i # mv dir /bin/dir-i; mv vdir /bin/vdir-i
 Additionally, one should add this to their ~/.bashrc or ~/.zsh_profile or whatever:
 
 ```
-LSCOLORS=$(python /path/to/ls_colors_generator.py)
+LS_COLORS=$(python /path/to/ls_colors_generator.py)
 alias ls=ls-i --color=auto
 alias dir=dir-i --color=auto
 alias vdir=vdir-i --color=auto
