@@ -7,4 +7,6 @@ cd ..
 ./configure
 make
 cd src
-mv ls /bin/ls-i # mv dir /bin/dir-i; mv vdir /bin/vdir-i
+mv ls /usr/bin/ls-i 
+mv dir /usr/bin/dir-i
+mv vdir /usr/bin/vdir-i
