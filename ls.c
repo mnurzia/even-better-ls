@@ -35,6 +35,7 @@
    Flaherty <dennisf@denix.elk.miles.com> based on original patches by
    Greg Lee <lee@uhunix.uhcc.hawaii.edu>.  */
 
+#include <config.h>
 #include <sys/types.h>
 
 #ifdef HAVE_CAP
@@ -56,8 +57,6 @@
 # include <sys/ptem.h>
 #endif
 
-#include <config.h>
-#include <selinux/selinux.h>
 #include <stdio.h>
 #include <assert.h>
 #include <setjmp.h>
@@ -65,9 +64,8 @@
 #include <pwd.h>
 #include <getopt.h>
 #include <signal.h>
+#include <selinux/selinux.h>
 #include <wchar.h>
-
-#include "system.h"
 
 #if HAVE_LANGINFO_CODESET
 # include <langinfo.h>
@@ -87,6 +85,7 @@
 # define SA_RESTART 0
 #endif
 
+#include "system.h"
 #include <fnmatch.h>
 
 #include "acl.h"
