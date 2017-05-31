@@ -48,7 +48,7 @@ alias vdir=vdir-i --color=auto
 
 The ls_colors_generator.py script allows you to customize the icons that are displayed in ls. You may want to chmod 777 it and place it in a binary directory so that you'll be able to include it in your shell init file.
 
-In order to change the icons and colors displayed, you must edit the script. For now, I'm using trapd00r 's [LS_COLORS script](https://github.com/trapd00r/LS_COLORS), and @ryanoasis ' [nerd-fonts](http://www.github.com/ryanoasis/nerd-fonts) and [devicons-shell](http://www.github.com/ryanoasis/devicons-shell) for the icons. Emoji can be used but it is a much more sparse library than the full set of icons that nerd-fonts provides
+In order to change the icons and colors displayed, you must edit the script. For now, I'm using trapd00r 's [LS_COLORS script](https://github.com/trapd00r/LS_COLORS), and @ryanoasis ' [nerd-fonts](http://www.github.com/ryanoasis/nerdfonts) and [devicons-shell](http://www.github.com/ryanoasis/devicons-shell) for the icons. Emoji can be used but it is a much more sparse library than the full set of icons that nerd-fonts provides
 
 In ls_colors_generator.py extension colors and characters correspond to their appropriate extension in the EXTENSIONS dict in the get_colors() function. For example, this line:
 
