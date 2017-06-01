@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 def get_colors():
-	ARCHIVE_COLOR 		= 85
-	IMAGE_COLOR 		= 196
-	CODE_COLOR		= 223
-	TEXT_COLOR		= 118
-	EXEC_COLOR		= 163
-	LIBRARY_COLOR		= 226
-	DATA_COLOR 		= 27
-	FONT_COLOR		= 84
+	ARCHIVE_COLOR 	= 85
+	IMAGE_COLOR 	= 196
+	CODE_COLOR	= 223
+	TEXT_COLOR	= 118
+	EXEC_COLOR	= 163
+	LIBRARY_COLOR	= 226
+	DATA_COLOR 	= 27
+	FONT_COLOR	= 84
 
 	FORMAT_COLORS = {
 		LEFT		: "",
 		RIGHT		: "",
-		END			: "\x1b[0m",
+		END		: "\x1b[0m",
 		RESET		: "\x1b[0m"
 	}
 
@@ -34,7 +34,7 @@ def get_colors():
 		SETGID		: "",
 		STICKY		: color_char(230,-1,0xE612),
 		OTHERWRITE	: color_char(230,-1,0xE612),
-		STOTHERWRITE	: color_char(230,-1,0xE612),
+		STOTHERWRITE: color_char(230,-1,0xE612),
 	}
 	
 	EXTENSION_LIST = {
@@ -826,12 +826,12 @@ def get_colors():
 	}
 		
 	return FORMAT_COLORS, SPECIAL, EXTENSION_LIST
-	
-def cc(*args,**kwargs):
-	return color_char(*args,**kwargs)
+
 
 def color_char(f,b,c,other=""):
-	return char_prefix("%s%s " % (color_seq_256(f,b,other),shell_unicode(c)))
+	return "m%s\x1b" % ("%s%s " % (color_seq_256(f,b,other),shell_unicode(c)))
+
+cc = color_char
 
 def color_seq_256(f,b,other):
 	if b != -1:
@@ -851,30 +851,27 @@ def shell_unicode(ch):
 	except:
 		return chr(ch)
 
-def char_prefix(s):
-	return "m%s\x1b" % s
-
 LEFT 	= "lc"
 RIGHT 	= "rc"
 END 	= "ec"
 RESET 	= "rs"
 
-NORMAL 			= "no"
-FILE			= "fi"
-DIRECTORY		= "di"
-LINK			= "ln"
-ORPHAN			= "or"
-MISSING			= "mi"
-PIPE			= "pi"
-SOCKET			= "so"
-BLOCKDEV		= "bd"
-CHARDEV			= "cd"
-DOOR			= "do"
-EXEC			= "ex"
-SETUID			= "su"
-SETGID			= "sg"
-STICKY			= "st"
-OTHERWRITE		= "ow"
+NORMAL 		= "no"
+FILE		= "fi"
+DIRECTORY	= "di"
+LINK		= "ln"
+ORPHAN		= "or"
+MISSING		= "mi"
+PIPE		= "pi"
+SOCKET		= "so"
+BLOCKDEV	= "bd"
+CHARDEV		= "cd"
+DOOR		= "do"
+EXEC		= "ex"
+SETUID		= "su"
+SETGID		= "sg"
+STICKY		= "st"
+OTHERWRITE	= "ow"
 STOTHERWRITE	= "tw"
 
 if __name__ == "__main__":
@@ -885,10 +882,7 @@ if __name__ == "__main__":
 	try:
 		if sys.argv[1] == "test":
 			os.system("mkdir test")
-			cmd = "touch "
-			for ext in exten.keys():
-				cmd += "test/%s " % ext.replace("*","")
-			os.system(cmd)
+			os.system("touch" + " ".join(ext for ext in exten.keys()))
 	except:
 		pass
 	for compname in formcol.keys():
