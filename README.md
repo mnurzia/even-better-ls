@@ -20,19 +20,8 @@ GNU coreutils ls is 4709 lines long. Pairing it with its includes rises the line
 
 Side note: vdir and dir are also compiled during this process. Feel free to move them as well.
 
-[This may be downloaded as a shell script as well.](https://github.com/illinoisjackson/even-better-ls/blob/master/install.sh)
-
 ```
-wget http://ftp.gnu.org/gnu/coreutils/coreutils-8.2.tar.xz
-tar -xf coreutils-8.2.tar.xz
-cd coreutils-8.2/src
-rm -rf ls.c
-wget http://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/ls.c
-cd ..
-./configure
-make
-cd src
-mv ls /bin/ls-i # mv dir /bin/dir-i; mv vdir /bin/vdir-i
+sh -c "$(curl -fsSL https://github.com/illinoisjackson/even-better-ls/blob/master/install.sh)"
 ```
 
 Additionally, one should add this to their ~/.bashrc or ~/.zsh_profile or whatever:
