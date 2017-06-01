@@ -1,4 +1,5 @@
-cp ls_colors_generator.py /usr/bin/ls_colors_generator
+chmod ls
+sudo cp ls_colors_generator.py /usr/bin/ls_colors_generator
 wget http://ftp.gnu.org/gnu/coreutils/coreutils-8.2.tar.xz
 tar -xf coreutils-8.2.tar.xz
 rm coreutils-8.2.tar.xz
@@ -9,6 +10,6 @@ cd ..
 ./configure
 make
 cd src
-mv ls /usr/bin/ls-i 
-mv dir /usr/bin/dir-i
-mv vdir /usr/bin/vdir-i
+sudo mv ls /usr/bin/ls-i 
+sudo mv dir /usr/bin/dir-i
+sudo mv vdir /usr/bin/vdir-i
