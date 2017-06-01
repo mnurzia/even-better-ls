@@ -1,52 +1,52 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-def get_colors():
-	ARCHIVE_COLOR 	= 85
-	IMAGE_COLOR 	= 196
-	CODE_COLOR	= 223
-	TEXT_COLOR	= 118
-	EXEC_COLOR	= 163
-	LIBRARY_COLOR	= 226
-	DATA_COLOR 	= 27
-	FONT_COLOR	= 84
 
+# View this file with a 4-space-to-tab ratio.
+def get_colors():
+	
 	FORMAT_COLORS = {
-		LEFT		: "",
-		RIGHT		: "",
-		END		: "\x1b[0m",
-		RESET		: "\x1b[0m"
+		LEFT		: "",			# Sequence to print *before* outputting a file name.
+		RIGHT		: "",			# Sequence to print *after* outputting a file name.
+		END			: "\x1b[0m",	# Sequence to print *after* the command executes.
+		RESET		: "\x1b[0m"		# Sequence to print *after* the command executes. (functionally identical)
 	}
 
+	# The color_char(fg, bg, char, other) function takes arguments and formats them into a valid
+	# LS_COLORS format specifier. FG denotes foreground (it is required). BG denotes background;
+	# in order to disable the background set it to -1. The char argument is the character code for
+	# the character that must be printed before the filename in ls. The "other" argument denotes
+	# any escape codes to print after the main fg/bg sequence (e.g. bold, italic formatters).
+	# ^^cc is an alias for color_char.
 	SPECIAL = {
-		NORMAL 		: "",
-		FILE		: color_char(48,-1,0xE612),
-		DIRECTORY	: color_char(29,-1,0xE5FE),
-		LINK		: color_char(147,-1,0xF178),
-		ORPHAN		: color_char(197,-1,0xE609),
-		MISSING		: color_char(208,-1,ord("?")),
-		PIPE		: color_char(115,-1,0xF25A),
-		SOCKET		: color_char(140,-1,0xF135),
-		BLOCKDEV	: color_char(178,-1,0xF069),
-		CHARDEV		: color_char(178,-1,0xF069),
-		DOOR		: color_char(84,-1,0xE5FE),
-		EXEC		: color_char(27,-1,0xF135),
-		SETUID		: "",
-		SETGID		: "",
-		STICKY		: color_char(230,-1,0xE612),
-		OTHERWRITE	: color_char(230,-1,0xE612),
-		STOTHERWRITE: color_char(230,-1,0xE612),
+		NORMAL 		: "",							# Should be left blank. Used as a fallback for everything else.
+		FILE		: color_char(48,-1,0xE612),		# Normal file, or one that does not have a color associated with it.
+		DIRECTORY	: color_char(29,-1,0xE5FE),		# A folder.
+		LINK		: color_char(147,-1,0xF178),	# Any kind of link.
+		ORPHAN		: color_char(232, 197, 0xF12A),	# An "orphaned" inode. Should be set to an error condition.
+		MISSING		: color_char(232, 197,ord("?")),# A "missing" inode. Should be set to an error condition.
+		PIPE		: color_char(115,-1,0xF25A),	# A named pipe.
+		SOCKET		: color_char(140,-1,0xF135),	# Honestly not sure what this is, so it must not appear much. Not needed probably.
+		BLOCKDEV	: color_char(178,-1,0xF069),	# A block device (e.g. /dev/sda)
+		CHARDEV		: color_char(178,-1,0xF069),	# A character device (e.g. /dev/random)
+		DOOR		: color_char(84,-1,0xE5FE),		# Client-server communication door. Not needed.
+		EXEC		: color_char(27,-1,0xF135),		# An executable file.
+		SETUID		: "",							# Set UID upon execution			
+		SETGID		: "",							# Set GID upon execution
+		STICKY		: color_char(230,-1,0xE612),	# Sticky bit set.
+		OTHERWRITE	: color_char(230,-1,0xE612),	# Writable by others than the owner + root.
+		STOTHERWRITE: color_char(230,-1,0xE612),	# Sticky, but writable by others than the owner + root.
 	}
 	
 	EXTENSION_LIST = {
 		"*README":		cc(220, -1, 0xE714),
-		"*README.rst":		cc(220, -1, 0xE714),
+		"*README.rst":	cc(220, -1, 0xE714),
 		"*LICENSE":		cc(220, -1, 0xE714),
 		"*COPYING":		cc(220, -1, 0xE714),
 		"*INSTALL":		cc(220, -1, 0xE714),
-		"*COPYRIGHT":		cc(220, -1, 0xE714),
+		"*COPYRIGHT":	cc(220, -1, 0xE714),
 		"*AUTHORS":		cc(220, -1, 0xE714),
 		"*HISTORY":		cc(220, -1, 0xE714),
-		"*CONTRIBUTORS":	cc(220, -1, 0xE714),
+		"*CONTRIBUTORS":cc(220, -1, 0xE714),
 		"*PATENTS":		cc(220, -1, 0xE714),
 		"*VERSION":		cc(220, -1, 0xE714),
 		"*NOTICE":		cc(220, -1, 0xE714),
@@ -55,7 +55,7 @@ def get_colors():
 		".txt":			cc(253, -1, 0xE714),
 		".etx":			cc(184, -1, 0xE60E),
 		".info":		cc(184, -1, 0xE60E),
-		".markdown":		cc(184, -1, 0xE60E),
+		".markdown":	cc(184, -1, 0xE60E),
 		".md":			cc(184, -1, 0xE60E),
 		".mkd":			cc(184, -1, 0xE60E),
 		".nfo":			cc(184, -1, 0xE60E),
@@ -107,9 +107,9 @@ def get_colors():
 		".pcf":			cc(1, -1, 0xF0AD),
 		".psf":			cc(1, -1, 0xF0AD),
 		".git":			cc(197, -1, 0xE702),
-		".gitignore":		cc(240, -1, 0xE702),
-		".gitattributes":	cc(240, -1, 0xE702),
-		".gitmodules":		cc(240, -1, 0xE702),
+		".gitignore":	cc(240, -1, 0xE702),
+		".gitattributes":cc(240, -1, 0xE702),
+		".gitmodules":	cc(240, -1, 0xE702),
 		".awk":			cc(172, -1, 0xF120),
 		".bash":		cc(172, -1, 0xF120),
 		".bat":			cc(172, -1, 0xF120),
@@ -175,7 +175,7 @@ def get_colors():
 		".jhtm":		cc(125, -1, 0xE60E, other="1"),
 		".mht":			cc(125, -1, 0xE60E, other="1"),
 		".eml":			cc(125, -1, 0xE60E, other="1"),
-		".mustache":		cc(125, -1, 0xE60F, other="1"),
+		".mustache":	cc(125, -1, 0xE60F, other="1"),
 		".coffee":		cc(74, -1, 0xE61B, other="1"),
 		".java":		cc(74, -1, 0xE61B, other="1"),
 		".js":			cc(74, -1, 0xE60C, other="1"),
@@ -188,11 +188,11 @@ def get_colors():
 		".vb":			cc(81, -1, ord("V")),
 		".vba":			cc(81, -1, ord("V")),
 		".vbs":			cc(81, -1, ord("V")),
-		"*Dockerfile":		cc(155, -1, 0xE7B0),
-		".dockerignore":	cc(240, -1, 0xE7B0),
-		"*Makefile":		cc(155, -1, 0xF0AD),
-		"*MANIFEST":		cc(243, -1, 0xF0AD),
-		"*pm_to_blib":		cc(240, -1, 0xF0AD),
+		"*Dockerfile":	cc(155, -1, 0xE7B0),
+		".dockerignore":cc(240, -1, 0xE7B0),
+		"*Makefile":	cc(155, -1, 0xF0AD),
+		"*MANIFEST":	cc(243, -1, 0xF0AD),
+		"*pm_to_blib":	cc(240, -1, 0xF0AD),
 		".am":			cc(242, -1, 0xF0AD),
 		".in":			cc(242, -1, 0xF0AD),
 		".hin":			cc(242, -1, 0xF0AD),
@@ -677,7 +677,7 @@ def get_colors():
 		".bin":			cc(124, -1, 0xF0A0),
 		".nrg":			cc(124, -1, 0xF0A0),
 		".qcow":		cc(124, -1, 0xF0A0),
-		".sparseimage":		cc(124, -1, 0xF0A0),
+		".sparseimage":	cc(124, -1, 0xF0A0),
 		".toast":		cc(124, -1, 0xF0A0),
 		".vcd":			cc(124, -1, 0xF0A0),
 		".vmdk":		cc(124, -1, 0xF0A0),
@@ -688,7 +688,7 @@ def get_colors():
 		".db":			cc(60, -1, 0xF1C0),
 		".fmp12":		cc(60, -1, 0xF1C0),
 		".fp7":			cc(60, -1, 0xF1C0),
-		".localstorage":	cc(60, -1, 0xF1C0),
+		".localstorage":cc(60, -1, 0xF1C0),
 		".mdb":			cc(60, -1, 0xF1C0),
 		".mde":			cc(60, -1, 0xF1C0),
 		".sqlite":		cc(60, -1, 0xF1C0),
@@ -705,41 +705,41 @@ def get_colors():
 		".sassc":		cc(244, -1, ord("T")),
 		".pid":			cc(248, -1, 0xF023),
 		".state":		cc(248, -1, 0xF023),
-		"*lockfile":		cc(248, -1, 0xF023),
+		"*lockfile":	cc(248, -1, 0xF023),
 		".err":			cc(160, -1, 0xF12A, other="1"),
 		".error":		cc(160, -1, 0xF12A, other="1"),
 		".stderr":		cc(160, -1, 0xF12A, other="1"),
 		".dump":		cc(241, -1, 0xF487),
-		".stackdump":		cc(241, -1, 0xF487),
-		".zcompdump":		cc(241, -1, 0xF487),
+		".stackdump":	cc(241, -1, 0xF487),
+		".zcompdump":	cc(241, -1, 0xF487),
 		".zwc":			cc(241, -1, 0xF487),
 		".pcap":		cc(29, -1, 0xE765),
 		".cap":			cc(29, -1, 0xE765),
 		".dmp":			cc(29, -1, 0xE765),
-		".DS_Store":		cc(239, -1, 0xF179),
-		".localized":		cc(239, -1, 0xF179),
+		".DS_Store":	cc(239, -1, 0xF179),
+		".localized":	cc(239, -1, 0xF179),
 		".CFUserTextEncoding":	cc(239, -1, 0xF179),
 		".allow":		cc(112, -1, 0xF00C),
 		".deny":		cc(196, -1, 0xF12A),
 		".service":		cc(45, -1, 0xF109),
-		"*@.service":		cc(45, -1, 0xF109),
+		"*@.service":	cc(45, -1, 0xF109),
 		".socket":		cc(45, -1, 0xF109),
 		".swap":		cc(45, -1, 0xF109),
 		".device":		cc(45, -1, 0xF109),
 		".mount":		cc(45, -1, 0xF109),
-		".automount":		cc(45, -1, 0xF109),
+		".automount":	cc(45, -1, 0xF109),
 		".target":		cc(45, -1, 0xF109),
 		".path":		cc(45, -1, 0xF109),
 		".timer":		cc(45, -1, 0xF109),
-		".snapshot":		cc(45, -1, 0xF109),
-		".application":		cc(116, -1, 0xE60B),
+		".snapshot":	cc(45, -1, 0xF109),
+		".application":	cc(116, -1, 0xE60B),
 		".cue":			cc(116, -1, 0xE60B),
-		".description":		cc(116, -1, 0xE60B),
-		".directory":		cc(116, -1, 0xE60B),
+		".description":	cc(116, -1, 0xE60B),
+		".directory":	cc(116, -1, 0xE60B),
 		".m3u":			cc(116, -1, 0xE60B),
 		".m3u8":		cc(116, -1, 0xE60B),
 		".md5":			cc(116, -1, ord("#")),
-		".properties":		cc(116, -1, 0xE60B),
+		".properties":	cc(116, -1, 0xE60B),
 		".sfv":			cc(116, -1, 0xE60B),
 		".srt":			cc(116, -1, 0xE60B),
 		".theme":		cc(116, -1, 0xE60B),
@@ -749,7 +749,7 @@ def get_colors():
 		".bfe":			cc(192, -1, 0xF084, other="3"),
 		".enc":			cc(192, -1, 0xF084, other="3"),
 		".gpg":			cc(192, -1, 0xF084, other="3"),
-		".signature":		cc(192, -1, 0xF084, other="3"),
+		".signature":	cc(192, -1, 0xF084, other="3"),
 		".sig":			cc(192, -1, 0xF084, other="3"),
 		".p12":			cc(192, -1, 0xF084, other="3"),
 		".pem":			cc(192, -1, 0xF084, other="3"),
@@ -827,13 +827,14 @@ def get_colors():
 		
 	return FORMAT_COLORS, SPECIAL, EXTENSION_LIST
 
-
+# Formats arguments into an LS_COLORS-complete escape sequence.
 def color_char(f,b,c,other=""):
-	return "m%s\x1b" % ("%s%s " % (color_seq_256(f,b,other),shell_unicode(c)))
+	return "m%s\x1b" % ("%s%s " % (color_seq(f,b,other),get_unicode(c)))
 
 cc = color_char
 
-def color_seq_256(f,b,other):
+# Formats fg and bg into an escape sequence.
+def color_seq(f,b,other):
 	if b != -1:
 		if other != "":
 			return "\x1b[38;5;%i;48;5;%i;%sm" % (f, b, other)
@@ -845,17 +846,20 @@ def color_seq_256(f,b,other):
 		else:
 			return "\x1b[38;5;%im" % f
 
-def shell_unicode(ch):
+# Return a unicode character. Python 2 and 3 complete.
+def get_unicode(ch):
 	try:
 		return unichr(ch)
 	except:
 		return chr(ch)
+
 
 LEFT 	= "lc"
 RIGHT 	= "rc"
 END 	= "ec"
 RESET 	= "rs"
 
+# LS_COLORS special file codes.
 NORMAL 		= "no"
 FILE		= "fi"
 DIRECTORY	= "di"
@@ -880,19 +884,24 @@ if __name__ == "__main__":
 	lsc = ""
 	formcol, special, exten = get_colors()
 	try:
-		if sys.argv[1] == "test":
+		if sys.argv[1] == "test": # generate a test directory with all file extensions
 			os.system("mkdir test")
 			os.system("touch" + " ".join(ext for ext in exten.keys()))
+			sys.exit()
 	except:
 		pass
+	
+	# Format left/right/exit/reset color codes.
 	for compname in formcol.keys():
 		comp = formcol[compname]
 		if comp != "":
 			lsc += compname+"="+comp+":"
+	# Format default file/folder colors.
 	for compname in special.keys():
 		comp = special[compname]
 		if comp != "":
 			lsc += compname+"="+comp+":"
+	# Format extensions.
 	for compname in sorted(exten.keys()):
 		comp = exten[compname]
 		if comp != "":
