@@ -39,9 +39,9 @@ Additionally, one should add this to their ~/.bashrc or ~/.zsh_profile or whatev
 
 ```
 LS_COLORS=$(python /path/to/ls_colors_generator.py)
-alias ls=ls-i --color=auto
-alias dir=dir-i --color=auto
-alias vdir=vdir-i --color=auto
+alias ls="ls-i --color=auto -w $(tput cols)"
+alias dir="dir-i --color=auto -w $(tput cols)"
+alias vdir="vdir-i --color=auto -w $(tput cols)"
 ```
 
 # Usage
