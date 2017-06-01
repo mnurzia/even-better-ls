@@ -21,17 +21,10 @@ GNU coreutils ls is 4709 lines long. Pairing it with its includes rises the line
 Side note: vdir and dir are also compiled during this process. Feel free to move them as well.
 
 ```
-sh -c "$(curl -fsSL https://github.com/illinoisjackson/even-better-ls/blob/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/install.sh"
 ```
 
-Additionally, one should add this to their ~/.bashrc or ~/.zsh_profile or whatever:
-
-```
-LS_COLORS=$(python /path/to/ls_colors_generator.py)
-alias ls="ls-i --color=auto -w $(tput cols)"
-alias dir="dir-i --color=auto -w $(tput cols)"
-alias vdir="vdir-i --color=auto -w $(tput cols)"
-```
+Additionally, one should append the contents of [append_to_profile.sh](https://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/append_to_profile.sh) to their corresponding profile file (.zshrc, .bashrc).
 
 # Usage
 
