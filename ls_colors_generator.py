@@ -906,5 +906,8 @@ if __name__ == "__main__":
 				lsc += compname+"="+comp+":"
 			else:
 				lsc += "*."+compname.lstrip("*.")+"="+comp+":"
-	sys.stdout.buffer.write(lsc.encode('utf-8'))
+	try:
+		sys.stdout.buffer.write(lsc.encode('utf-8'))
+	except:
+		print(lsc.encode('utf-8')) # python2
 	
