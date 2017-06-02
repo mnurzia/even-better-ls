@@ -38,20 +38,20 @@ def get_colors():
 	}
 	
 	EXTENSION_LIST = {
-		"bin":			cc(155, -1, 0xF471),
-		"boot":			cc(27,	-1,	0xF0A0),
-		"dev":			cc(220,	-1, 0xE5FC),
-		"etc":			cc(55,	-1, 0xF0AD),
-		"home":			cc(226,	-1, 0xF015),
-		"lost+found":	cc(165,	-1, 0xF118),
-		"mnt":			cc(129,	-1, 0xF0A0),
-		"opt":			cc(195,	-1, 0xF0AD),
-		"proc":			cc(250,	-1,	0xF0AD),
-		"root":			cc(199,	-1,	0xE26E),
-		"sbin":			cc(160, -1, 0xF471),
-		"sys":			cc(254, -1,	0xF2DB),
-		"usr":			cc(189, -1, 0xF0C0),
-		"var":			cc(120, -1, ord("?")),
+		"*bin":			cc(155, -1, 0xF471),
+		"*boot":			cc(27,	-1,	0xF0A0),
+		"*dev":			cc(220,	-1, 0xE5FC),
+		"*etc":			cc(55,	-1, 0xF0AD),
+		"*home":			cc(226,	-1, 0xF015),
+		"*lost+found":	cc(165,	-1, 0xF118),
+		"*mnt":			cc(129,	-1, 0xF0A0),
+		"*opt":			cc(195,	-1, 0xF0AD),
+		"*proc":			cc(250,	-1,	0xF0AD),
+		"*root":			cc(199,	-1,	0xE26E),
+		"*sbin":			cc(160, -1, 0xF471),
+		"*sys":			cc(254, -1,	0xF2DB),
+		"*usr":			cc(189, -1, 0xF0C0),
+		"*var":			cc(120, -1, ord("?")),
 		
 		"*README":		cc(220, -1, 0xE714),
 		"*README.rst":	cc(220, -1, 0xE714),
@@ -921,6 +921,8 @@ if __name__ == "__main__":
 		comp = exten[compname]
 		if comp != "":
 			if compname.startswith("*"):
+				lsc += compname+"="+comp+":"
+			elif compname.startswith("-"):
 				lsc += compname+"="+comp+":"
 			else:
 				lsc += "*."+compname.lstrip("*.")+"="+comp+":"
