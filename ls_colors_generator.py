@@ -901,7 +901,7 @@ if __name__ == "__main__":
 	try:
 		if sys.argv[1] == "test": # generate a test directory with all file extensions
 			os.system("mkdir test")
-			os.system("touch" + " ".join(ext for ext in exten.keys()))
+			os.system("touch" + " ".join("test/"+ext for ext in exten.keys()))
 			sys.exit()
 	except:
 		pass
