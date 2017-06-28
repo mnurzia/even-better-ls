@@ -1,16 +1,32 @@
+coreutils_version="coreutils-8.2"
+
+case $OSTYPE in
+    darwin*)
+        macOS_config_params="gl_cv_func_stpncpy=yes"
+        coreutils_download_method="curl -o ${coreutils_version}.tar.xz"
+        patch_download_method="curl -o ls.c"
+        install_location="/usr/local/bin"
+        ;;
+    *)
+        install_location="/usr/bin"
+        coreutils_download_method="wget"
+        patch_download_method="wget"
+        ;;
+esac
+
 wget http://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/ls_colors_generator.py
 chmod 755 ls_colors_generator.py
 sudo mv ls_colors_generator.py /usr/bin/ls_colors_generator
-wget http://ftp.gnu.org/gnu/coreutils/coreutils-8.2.tar.xz
-tar -xf coreutils-8.2.tar.xz
-rm coreutils-8.2.tar.xz
-cd coreutils-8.2/src
+$coreutils_download_method http://ftp.gnu.org/gnu/coreutils/${coreutils_version}.tar.xz
+tar -xf ${coreutils_version}.tar.xz
+rm ${coreutils_version}.tar.xz
+cd ${coreutils_version}/src
 rm -rf ls.c
-wget http://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/ls.c
+$patch_download_method http://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/ls.c
 cd ..
-./configure
+./configure $macOS_config_params
 make
 cd src
-sudo mv ls /usr/bin/ls-i
-sudo mv dir /usr/bin/dir-i
-sudo mv vdir /usr/bin/vdir-i
+sudo mv ls ${install_location}/ls-i
+sudo mv dir ${install_location}/dir-i
+sudo mv vdir ${install_location}/vdir-i
