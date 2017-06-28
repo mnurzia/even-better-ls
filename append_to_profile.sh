@@ -1,5 +1,11 @@
 LS_COLORS=$(ls_colors_generator)
 
+case $OSTYPE in
+    darwin*)
+        export LS_COLORS
+        ;;
+esac
+
 run_ls() {
 	ls-i --color=auto -w $(tput cols) "$@"
 }
