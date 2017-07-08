@@ -821,7 +821,7 @@ def get_colors():
 		".pi":			cc(7, -1, 0xF10B),
 		".plt":			cc(7, -1, 0xF10B),
 		".pm":			cc(7, -1, 0xF10B),
-		".rb":			cc(7, -1, 0xF10B),
+		".rb":			cc(1, -1, 0xE739),
 		".rdf":			cc(7, -1, 0xF10B),
 		".rst":			cc(7, -1, 0xF10B),
 		".ru":			cc(7, -1, 0xF10B),
