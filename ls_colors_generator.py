@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# View this file with a 4-space-to-tab ratio.
 def get_colors():
 
     FORMAT_COLORS = {
