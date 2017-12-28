@@ -41,12 +41,12 @@ def get_colors():
         "*boot": cc(27,	-1, 0xF0A0),
         "*dev":	cc(220,	-1, 0xE5FC),
         "*etc":	cc(55,	-1, 0xF0AD),
-        "*home": cc(226,	-1, 0xF015),
-        "*lost+found": cc(165,	-1, 0xF118),
+        "*home": cc(226, -1, 0xF015),
+        "*lost+found": cc(165, -1, 0xF118),
         "*mnt": cc(129,	-1, 0xF0A0),
         "*opt": cc(195,	-1, 0xF0AD),
-        "*proc": cc(250,	-1, 0xF0AD),
-        "*root": cc(199,	-1, 0xE26E),
+        "*proc": cc(250, -1, 0xF0AD),
+        "*root": cc(199, -1, 0xE26E),
         "*sbin": cc(160, -1, 0xF471),
         "*sys": cc(254, -1, 0xF2DB),
         "*usr": cc(189, -1, 0xF0C0),
@@ -73,7 +73,7 @@ def get_colors():
         ".mkd": cc(184, -1, 0xE60E),
         ".nfo": cc(184, -1, 0xE60E),
         ".tex": cc(184, -1, 0xE60E),
-        ".textile":	cc(184, -1, 0xE60E),
+        ".textile": cc(184, -1, 0xE60E),
         ".json": cc(178, -1, 0xE60B),
         ".msg": cc(178, -1, 0xE60B),
         ".pgn": cc(178, -1, 0xE60B),
@@ -114,7 +114,7 @@ def get_colors():
         "*conf": cc(1, -1, 0xF0AD),
         "*rc": cc(1, -1, 0xF0AD),
         ".ini":	cc(1, -1, 0xF0AD),
-        ".viminfo":	cc(1, -1, 0xF0AD),
+        ".viminfo": cc(1, -1, 0xF0AD),
         ".pcf": cc(1, -1, 0xF0AD),
         ".psf": cc(1, -1, 0xF0AD),
         ".git": cc(197, -1, 0xE702),
@@ -695,7 +695,7 @@ def get_colors():
         ".mdb":	cc(60, -1, 0xF1C0),
         ".mde":	cc(60, -1, 0xF1C0),
         ".sqlite": cc(60, -1, 0xF1C0),
-        ".typelib":	cc(60, -1, 0xF1C0),
+        ".typelib": cc(60, -1, 0xF1C0),
         ".nc": cc(60, -1, 0xF1C0),
         ".pacnew": cc(33, -1, 0xF0E2),
         ".un~":	cc(241, -1, 0xF0E2),
@@ -724,7 +724,7 @@ def get_colors():
         ".CFUserTextEncoding": cc(239, -1, 0xF179),
         ".allow": cc(112, -1, 0xF00C),
         ".deny": cc(196, -1, 0xF12A),
-        ".service":	cc(45, -1, 0xF109),
+        ".service": cc(45, -1, 0xF109),
         "*@.service": cc(45, -1, 0xF109),
         ".socket": cc(45, -1, 0xF109),
         ".swap": cc(45, -1, 0xF109),
@@ -746,8 +746,8 @@ def get_colors():
         ".sfv":	cc(116, -1, 0xE60B),
         ".srt": cc(116, -1, 0xE60B),
         ".theme": cc(116, -1, 0xE60B),
-        ".torrent":	cc(116, -1, 0xE60B),
-        ".urlview":	cc(116, -1, 0xE60B),
+        ".torrent": cc(116, -1, 0xE60B),
+        ".urlview": cc(116, -1, 0xE60B),
         ".asc":	cc(192, -1, 0xF084, other="3"),
         ".bfe":	cc(192, -1, 0xF084, other="3"),
         ".gpg":	cc(192, -1, 0xF084, other="3"),
@@ -794,8 +794,8 @@ def get_colors():
         ".cnc":	cc(7, -1, 0xF10B),
         ".def":	cc(7, -1, 0xF10B),
         ".ex": cc(7, -1, 0xF10B),
-        ".example":	cc(7, -1, 0xF10B),
-        ".feature":	cc(7, -1, 0xF10B),
+        ".example": cc(7, -1, 0xF10B),
+        ".feature": cc(7, -1, 0xF10B),
         ".ger":	cc(7, -1, 0xF10B),
         ".map":	cc(7, -1, 0xF10B),
         ".mf": cc(7, -1, 0xF10B),
@@ -894,22 +894,22 @@ if __name__ == "__main__":
     for compname in formcol.keys():
         comp = formcol[compname]
         if comp != "":
-            lsc += compname+"="+comp+":"
+            lsc += compname + "=" + comp + ":"
             # Format default file/folder colors.
     for compname in special.keys():
         comp = special[compname]
         if comp != "":
-            lsc += compname+"="+comp+":"
+            lsc += compname + "=" + comp + ":"
             # Format extensions.
     for compname in sorted(exten.keys()):
         comp = exten[compname]
         if comp != "":
             if compname.startswith("*"):
-                lsc += compname+"="+comp+":"
+                lsc += compname + "=" + comp + ":"
             elif compname.startswith("-"):
-                lsc += compname+"="+comp+":"
+                lsc += compname + "=" + comp + ":"
             else:
-                lsc += "*."+compname.lstrip("*.")+"="+comp+":"
+                lsc += "*." + compname.lstrip("*.") + "=" + comp + ":"
     try:
         sys.stdout.buffer.write(lsc.encode('utf-8'))
     except:
