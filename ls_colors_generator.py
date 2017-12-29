@@ -832,24 +832,21 @@ def color_char(f, b, c, other=""):
 cc = color_char
 
 # Formats fg and bg into an escape sequence.
-def color_seq(f,b,other):
+def color_seq(f, b, other):
     if b != -1:
         if other != "":
             return "\x1b[38;5;%i;48;5;%i;%sm" % (f, b, other)
-
         return "\x1b[38;5;%i;48;5;%im" % (f, b)
-
     else:
         if other != "":
             return "\x1b[38;5;%i;%sm" % (f, other)
-
         return "\x1b[38;5;%im" % f
 
 # Return a unicode character. Python 2 and 3 complete.
 def get_unicode(ch):
     try:
         return unichr(ch)
-    except:
+    except NameError:
         return chr(ch)
 
 
@@ -864,11 +861,11 @@ FILE = "fi"
 DIRECTORY = "di"
 LINK = "ln"
 ORPHAN = "or"
-MISSING	= "mi"
+MISSING = "mi"
 PIPE = "pi"
 SOCKET = "so"
 BLOCKDEV = "bd"
-CHARDEV	= "cd"
+CHARDEV = "cd"
 DOOR = "do"
 EXEC = "ex"
 SETUID = "su"
@@ -885,7 +882,7 @@ if __name__ == "__main__":
     try:
         if sys.argv[1] == "test": # generate a test directory with all file extensions
             os.system("mkdir test")
-            os.system("touch" + " ".join("test/"+ext for ext in exten.keys()))
+            os.system("touch" + " ".join("test/" + ext for ext in exten.keys()))
             sys.exit()
     except:
         pass
