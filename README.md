@@ -1,3 +1,5 @@
+# Hold tight guys, I've been working on a complete rewrite of GNU ls that addresses all of your problems! It should be out within a few days.
+
 # even-better-ls
 
 ![visual description of even-better-ls](http://imgur.com/H0sLGFX.png)
